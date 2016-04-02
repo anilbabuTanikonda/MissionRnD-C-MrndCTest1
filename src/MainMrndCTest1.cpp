@@ -28,6 +28,7 @@ All the Best .
 #include "FunctionHeadersMrndCTest1.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include<conio.h>
 
 struct node{
 	int data;
@@ -77,7 +78,9 @@ void make_it_circular(struct node *head){
 int main(){
 
 	//Test Sequences
-
+	int a[10] = { 1, 3, 5, 7, 2, 4, 8, 16,18,20};
+	int n = 10;
+	int *re=find_sequences(a,n);
 	//Test Circular Linked Lists
 
     //Test Between Days
@@ -93,5 +96,6 @@ int main(){
 	int days = between_days(date1head, date2head);
 	printf("Total Days - %d\n",days);
 	*/
-	//Test Concat4 Strings
+	//Test Con	cat4 Strings
+	
 }

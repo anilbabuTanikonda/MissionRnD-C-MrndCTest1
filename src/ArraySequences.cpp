@@ -30,8 +30,89 @@ Difficulty : Medium
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-
+int p(int r, int n)
+{
+	int result = 1;
+	while (n>0)
+	{
+		result = result*r;
+		n--;
+	}
+	return result;
+}
 int * find_sequences(int *arr, int len){
 	//Return final array which has 6indexes [AP1_S,AP1_E,AP2_S,AP2_E,GP1_S,GP2_E]
-	return NULL;
+
+	if (len == 0 || len < 0)
+		return NULL;
+	int count, a, i, d, n, n1, strt_ind, end_ind, strt_ind1, end_ind1, strt_ind2, end_ind2, r, result[6];
+
+	for (i = 0; i<len; i++)
+	{
+		a= arr[i];
+		d = arr[i + 1] - arr[i];
+		count = 2;
+		n1 = i + 2;
+		n = 3;
+		while ((a + ((n - 1)*d)) == arr[n1])
+		{
+			count++;
+			n++;
+			n1++;
+		}
+		if (count >= 3)
+		{
+			strt_ind = i;
+			end_ind = n1 - 1;
+			break;
+		}
+	}
+	result[0] = strt_ind;
+	result[1] = end_ind;
+	i = 0;
+	for (i = end_ind; i<len; i++)
+	{
+		a = arr[i];
+		d = arr[i + 1] - arr[i];
+		count = 2;
+		n1 = i + 2;
+		n = 3;
+		while ((a + ((n - 1)*d)) == arr[n1])
+		{
+			count++;
+			n++;
+			n1++;
+		}
+		if (count >= 3)
+		{
+			strt_ind1 = i;
+			end_ind1 = n1 - 1;
+			break;
+		}
+	}
+	result[2] = strt_ind1;
+	result[3] = end_ind1;
+	for (i = 0; i<len; i++)
+	{
+		a = arr[i];
+		r = arr[i + 1] / arr[i];
+		n1 = i + 2;
+		n = 3;
+		count = 2;
+		while ((a*p(r, n - 1)) == arr[n1])
+		{
+			count++;
+			n++;
+			n1++;
+		}
+		if (count >= 3)
+		{
+			strt_ind2 = i;
+			end_ind2 = n1 - 1;
+			break;
+		}
+	}
+	result[4] = strt_ind2;
+	result[5] = end_ind2;
+	return result;
 }
