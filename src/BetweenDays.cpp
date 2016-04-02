@@ -87,6 +87,18 @@ int between_days(struct node *date1head, struct node *date2head){
 		year1= year1 * 10 + ptr->data;
 		ptr = ptr->next;
 	}
+	if (date<1 || date>31)
+		return -1;
+	if (mnth<1 || mnth>12)
+		return -1;
+	if (date1<1 || date1>31)
+		return -1;
+	if (mnth1<1 || mnth1>12)
+		return -1;
+	if (year<0 || year>9999)
+		return -1;
+	if (year1<0 || year1>9999)
+		return -1;
 	int leap,n1,n2;
 	if (date>2)
 		leap=year / 4 - year / 100 + year / 400;
